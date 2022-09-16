@@ -1,0 +1,1009 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* =================== LANDING PAGE CSS =================== */
+/* Navbar */
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .show > .nav-link {
+  font-weight: 500;
+  color: #0c145a;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #0c145a;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #7e8cac;
+}
+
+.navbar-light .btn-sign-in {
+  color: #0c145a;
+  background-color: #e7eaf5;
+  padding: 0.75rem 1.875rem;
+}
+
+/* Header */
+.header .header-title {
+  font-size: 2.625rem;
+  line-height: 1.5;
+}
+
+.header .btn-get {
+  background-color: #4d17e2;
+  padding: 0.75rem 3rem;
+}
+
+.header .btn-learn:hover {
+  color: #0c145a;
+}
+
+.header .card {
+  border-radius: 1rem;
+  box-shadow: -8px 8px 58px 0px rgba(0, 0, 0, 0.1);
+}
+
+.header .left-card {
+  width: 207px;
+  height: 112px;
+  top: 6.68rem;
+  left: -3.625rem;
+  padding: 0.875rem;
+}
+
+.header .right-card {
+  width: 135px;
+  height: 177px;
+  bottom: 6.5rem;
+  right: -3.2rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.header .right-card-support {
+  padding: 0.063rem 0.625rem;
+  background-color: #00baff;
+  width: max-content;
+  border-radius: 0.375rem;
+  bottom: -0.5rem;
+  left: auto;
+  right: auto;
+}
+
+/* Feature */
+.feature .feature-card {
+  background-color: #f9faff;
+  padding: 1.875rem;
+  border-radius: 1.625rem;
+  margin-right: 16px;
+}
+
+/* Featured Game */
+.featured-game .overflow-setting {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.featured-game .featured-game-card {
+  transition: all 0.4s;
+  border-radius: 1.625rem;
+  width: 205px;
+  height: 270px;
+}
+
+.featured-game .featured-game-card:hover {
+  transition: all 0.4s;
+  border: 4px solid #2b2467;
+}
+
+.featured-game .featured-game-card:hover img {
+  transition: all 0.4s;
+  filter: blur(40px);
+  width: 181px;
+  height: 246px;
+}
+
+.featured-game .featured-game-card .blur-sharp {
+  overflow: hidden;
+  border-radius: 1.625rem;
+}
+.featured-game .featured-game-card:hover .blur-sharp {
+  width: 192px;
+  border: 7px solid white;
+}
+
+.featured-game .cover {
+  transition: all 0.4s;
+  opacity: 0;
+  left: 0;
+  right: 0;
+  height: -webkit-fill-available;
+}
+
+.featured-game .featured-game-card:hover .cover {
+  opacity: 1;
+}
+
+.featured-game .game-icon {
+  margin-top: 3.125rem;
+}
+
+@media (min-width: 768px) {
+  .featured-game .overflow-setting {
+    overflow: hidden;
+  }
+}
+
+/* Reached */
+.reached .vertical-line {
+  width: 1px;
+  background-color: #e7eaf5;
+  height: 94px;
+}
+
+.reached .horizontal-line {
+  width: 240px;
+  background-color: #e7eaf5;
+  height: 1px;
+}
+
+/* Story */
+.story .btn-read {
+  padding: 0.75rem 3rem;
+  background-color: #e7eaf5;
+}
+
+.story .img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Footer */
+footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #f9faff;
+}
+
+footer ul {
+  margin-bottom: 0;
+}
+
+footer ul li a {
+  transition: 0.2s;
+}
+
+footer ul li a:hover {
+  color: #4d17e2;
+  text-decoration: underline !important;
+  background-color: transparent;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+}
+
+@media (max-width: 768px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  /* Header */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  /* Navbar */
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  /* Header */
+  .header .underline-blue {
+    text-decoration: none;
+    position: relative;
+  }
+
+  .header .underline-blue:after {
+    position: absolute;
+    content: "";
+    height: 8px;
+    bottom: 11px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #00baff;
+    z-index: -10;
+  }
+
+  /* Featured Game */
+  .featured-game .featured-game-card:hover .blur-sharp {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* =================== SIGNIN PAGE CSS =================== */
+/* Sign-in */
+.sign-in .img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.sign-in .bg-blue {
+  background-color: #1a1640;
+}
+
+.sign-in input[type="password"],
+.sign-in input[type="email"] {
+  border: 1px solid #0c145a;
+  padding: 0.75rem 1.625rem;
+  color: #0c145a;
+}
+
+.sign-in input[type="password"]:focus-within,
+.sign-in input[type="email"]:focus-within {
+  color: #0c145a;
+}
+
+.sign-in input[type="password"]::placeholder,
+.sign-in input[type="email"]::placeholder {
+  color: #ccd0dd;
+}
+
+.sign-in .btn-sign-in {
+  padding: 0.75rem;
+  background-color: #4d17e2;
+}
+
+.sign-in .btn-sign-up {
+  padding: 0.75rem;
+  background-color: #e7eaf5;
+}
+
+.sign-in .button-group {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .sign-in .container,
+  .sign-in input[type="password"],
+  .sign-in input[type="email"] {
+    max-width: 437px;
+  }
+}
+
+/* =================== SIGNUP PAGE CSS =================== */
+/* Sign Up */
+.sign-up input[type="password"],
+.sign-up input[type="email"],
+.sign-up input[type="text"] {
+  border: 1px solid #0c145a;
+  padding: 0.75rem 1.625rem;
+  color: #0c145a;
+}
+
+.sign-up input[type="password"]:focus-within,
+.sign-up input[type="email"]:focus-within,
+.sign-up input[type="text"]:focus-within {
+  color: #0c145a;
+}
+
+.sign-up input[type="password"]::placeholder,
+.sign-up input[type="email"]::placeholder,
+.sign-up input[type="text"]::placeholder {
+  color: #ccd0dd;
+}
+
+.sign-up .btn-sign-up {
+  padding: 0.75rem;
+  background-color: #4d17e2;
+}
+
+.sign-up .btn-sign-in {
+  padding: 0.75rem;
+  background-color: #e7eaf5;
+}
+
+.sign-up .button-group {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .sign-up .container,
+  .sign-up input[type="password"],
+  .sign-up input[type="email"] {
+    max-width: 437px;
+  }
+}
+
+.sign-up-success .img-fluid {
+  max-width: 66%;
+  height: auto;
+}
+
+.sign-up-success .btn-top-up {
+  padding: 0.75rem 1rem;
+  background-color: #4d17e2;
+}
+
+@media (min-width: 768px) {
+  .sign-up-success .button-group {
+    width: 170px;
+  }
+}
+
+/* =================== DETAIL PAGE CSS =================== */
+/* Details */
+.detail .img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.625rem;
+}
+
+.detail hr {
+  margin: 0;
+  background-color: #e7eaf5;
+  border: 0;
+  opacity: 1;
+}
+
+.detail input[type="text"] {
+  max-width: 437px;
+  border: 1px solid #0c145a;
+  padding: 0.75rem 1.625rem;
+  color: #0c145a;
+}
+
+.detail input[type="text"]:focus-within {
+  color: #0c145a;
+}
+
+.detail input[type="text"]::placeholder {
+  color: #ccd0dd;
+}
+
+.detail .detail-card {
+  transition: all 0.1s linear;
+  background-color: #f9faff;
+  border-radius: 1.625rem;
+  padding: 1.875rem;
+  cursor: pointer;
+}
+
+.detail input[type="radio"]:checked + .detail-card {
+  border: 2px solid #00baff;
+  background-color: rgba(0, 186, 255, 0.05);
+}
+
+.detail .detail-card #icon-check {
+  transition: all 0.1s linear;
+  opacity: 0;
+}
+
+.detail input[type="radio"]:checked + .detail-card #icon-check {
+  opacity: 1;
+}
+
+.detail .btn-submit {
+  background-color: #4d17e2;
+  padding: 0.75rem 3rem;
+}
+
+/* =================== CHECKOUT PAGE CSS =================== */
+/* Checkout */
+.checkout {
+  max-width: 800px;
+}
+
+.checkout .img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.625rem;
+}
+
+.checkout .cropped {
+  width: 110px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 1.625rem;
+}
+
+.checkout .cropped img {
+  margin: -10px 0px 0px 0px;
+}
+
+.checkout hr {
+  margin: 0;
+  background-color: #e7eaf5;
+  border: 0;
+  opacity: 1;
+}
+
+.checkout span.purchase-details,
+.checkout span.payment-details {
+  display: block;
+  font-weight: 500;
+}
+
+.checkout .checkbox-label {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkout .checkbox-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkout .checkmark {
+  transition: all 0.06s linear;
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  border-radius: 0.375rem;
+  border: 2px solid #0c145a;
+}
+
+.checkout .checkbox-label input:checked ~ .checkmark {
+  background-color: #ffffff;
+  border: 2px solid #00baff;
+}
+
+.checkout .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkout .checkbox-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkout .checkbox-label .checkmark:after {
+  width: 14px;
+  height: 14px;
+  background-color: #00baff;
+  border-radius: 0.25rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.checkout .btn-confirm-payment {
+  padding: 0.75rem 2.875rem;
+  background-color: #4d17e2;
+}
+
+.checkout .img-checkout {
+  width: 110px;
+  height: 140px;
+}
+
+/* Medium devices (landscape phones, 768px and up) */
+@media (min-width: 768px) {
+  .checkout span.purchase-details,
+  .checkout span.payment-details {
+    float: right;
+  }
+  .checkout .cropped {
+    width: 200px;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 1.625rem;
+  }
+}
+
+/* =================== SUCCESS CHECKOUT PAGE CSS =================== */
+/* Complete Checkout */
+.complete-checkout .img-fluid {
+  max-width: 66%;
+  height: auto;
+}
+
+.complete-checkout .btn-dashboard {
+  padding: 0.75rem 3.313rem;
+  background-color: #4d17e2;
+}
+
+.complete-checkout .btn-whatsapp {
+  padding: 0.75rem 1.75rem;
+  background-color: #e7eaf5;
+}
+
+@media (min-width: 768px) {
+  .complete-checkout .button-group {
+    width: 250px;
+  }
+}
+
+/* =================== NOT FOUND PAGE CSS =================== */
+.not-found .img-fluid {
+  max-width: 66%;
+  height: auto;
+}
+
+.not-found .btn-homepage {
+  padding: 0.75rem;
+  background-color: #4d17e2;
+}
+
+@media (min-width: 768px) {
+  .not-found .button-group {
+    width: 190px;
+  }
+}
+
+/* =================== MEMBERS AREA =================== */
+/* =================== DASHBOARD PAGE CSS =================== */
+.overview {
+  background-color: #fbfcfd;
+}
+
+.overview main.main-wrapper {
+  margin-left: 340px;
+  height: 100%;
+  margin-right: auto;
+  position: relative;
+  padding: 50px 50px 50px 0px;
+}
+
+.overview main .main-content {
+  max-width: 900px;
+}
+
+.overview .latest-transaction .main-content-table {
+  background-color: #ffffff;
+  padding: 1.25rem 1.875rem;
+  border-radius: 1rem;
+  max-width: 900px;
+}
+
+.overview .latest-transaction .game-title-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.overview .latest-transaction .game-title {
+  white-space: nowrap;
+  width: 135px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.overview .table > :not(caption) > * > * {
+  padding: 10px 0px;
+}
+
+.overview .latest-transaction table thead tr th {
+  font-weight: 400;
+}
+
+.overview .latest-transaction .icon-status {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  margin: 9px 6px 0px 0px;
+}
+
+.overview .latest-transaction .icon-status.pending {
+  background-color: #febd57;
+}
+
+.overview .latest-transaction .icon-status.success {
+  background-color: #1abc9c;
+}
+
+.overview .latest-transaction .icon-status.failed {
+  background-color: #fe5761;
+}
+
+.overview .top-up-categories .categories-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+}
+
+@media (max-width: 992px) {
+  .overview main.main-wrapper {
+    width: 100%;
+  }
+}
+
+.sidebar .content {
+  background: #ffffff;
+  width: 290px;
+  position: relative;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  overflow-y: auto;
+}
+
+.sidebar .content::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar .menus .item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.sidebar .menus .item.active a,
+.sidebar .menus .item:hover a {
+  color: #0c145a;
+  font-weight: 500;
+}
+
+.sidebar .menus .item.active > svg path,
+.sidebar .menus .item:hover > svg path {
+  transition: all 0.2s linear;
+  stroke: #4d17e2;
+}
+
+.sidebar .menus .item.active::after {
+  content: " ";
+  border: 2px solid #00baff;
+  border-radius: 999px;
+  width: 0px;
+  height: 100%;
+  position: absolute;
+  background-color: #00baff;
+  right: 0;
+  transition: all 0.2s linear;
+}
+
+.sidebar .menus .item a {
+  color: #7e8cac;
+  transition: all 0.2s linear;
+}
+
+.sidebar-footer .footer-card {
+  background-color: #f9faff;
+  border-radius: 1rem;
+  padding: 20px;
+}
+
+.sidebar-footer .btn-get-started {
+  background-color: #4d17e2;
+  padding: 0.438rem;
+}
+
+@media (min-height: 900px) {
+  .sidebar .content {
+    overflow-y: hidden;
+  }
+}
+
+/* =================== TRANSACTIONS PAGE CSS =================== */
+.transactions {
+  background-color: #fbfcfd;
+}
+
+.transactions main.main-wrapper {
+  margin-left: 340px;
+  height: 100%;
+  margin-right: auto;
+  position: relative;
+  padding: 50px 50px 50px 0px;
+}
+
+.transactions main .main-content {
+  max-width: 1047px;
+}
+
+.transactions .btn {
+  display: inline-block;
+  width: 112px;
+  padding: 0.563rem;
+}
+
+.transactions .btn-status.btn-active {
+  color: #ffffff;
+  background-color: #0c145a;
+}
+
+.transactions .btn-status {
+  color: #0c145a;
+  background-color: #e7eaf5;
+}
+
+.transactions .latest-transaction .main-content-table {
+  background-color: #ffffff;
+  padding: 1.25rem 1.875rem;
+  border-radius: 1rem;
+  max-width: 1047px;
+}
+
+.transactions .latest-transaction .game-title-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.transactions .latest-transaction .game-title {
+  white-space: nowrap;
+  width: 135px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transactions .table > :not(caption) > * > * {
+  padding: 10px 0px;
+}
+
+.transactions .latest-transaction table thead tr th {
+  font-weight: 400;
+}
+
+.transactions .latest-transaction .icon-status {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  margin: 9px 6px 0px 0px;
+}
+
+.transactions .latest-transaction .icon-status.pending {
+  background-color: #febd57;
+}
+
+.transactions .latest-transaction .icon-status.success {
+  background-color: #1abc9c;
+}
+
+.transactions .latest-transaction .icon-status.failed {
+  background-color: #fe5761;
+}
+
+@media (max-width: 992px) {
+  .transactions main.main-wrapper {
+    width: 100%;
+  }
+}
+
+.transactions-detail {
+  background-color: #fbfcfd;
+}
+
+.transactions-detail main.main-wrapper {
+  margin-left: 340px;
+  height: 100%;
+  margin-right: auto;
+  position: relative;
+  padding: 50px 50px 50px 0px;
+}
+
+.transactions-detail main .main-content {
+  max-width: 860px;
+}
+
+.transactions-detail .btn-status.btn-active {
+  color: #ffffff;
+  background-color: #0c145a;
+}
+
+.transactions-detail .btn-status {
+  color: #0c145a;
+  background-color: #e7eaf5;
+}
+
+.transactions-detail .details .main-content-card {
+  background-color: #ffffff;
+  padding: 1.875rem;
+  border-radius: 1rem;
+  max-width: 860px;
+}
+
+.transactions-detail .details .game-title-header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.transactions-detail .details .game-title {
+  white-space: nowrap;
+  width: 135px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transactions-detail .table > :not(caption) > * > * {
+  padding: 10px 0px;
+}
+
+.transactions-detail .details table thead tr th {
+  font-weight: 400;
+}
+
+.transactions-detail .details .icon-status {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  margin: 9px 6px 0px 20px;
+}
+
+.transactions-detail .details .icon-status.pending {
+  background-color: #febd57;
+}
+
+.transactions-detail .details .icon-status.success {
+  background-color: #1abc9c;
+}
+
+.transactions-detail .details .icon-status.failed {
+  background-color: #fe5761;
+}
+
+.checkout {
+  max-width: 800px;
+}
+
+.transactions-detail .checkout .label {
+  width: 130px;
+  padding: 0.5rem;
+}
+
+.transactions-detail .checkout .label.pending {
+  color: #febd57;
+  background-color: #ffeed3;
+}
+
+.transactions-detail .checkout .label.success {
+  color: #1abc9c;
+  background-color: #b8e9df;
+}
+
+.transactions-detail .checkout .label.failed {
+  color: #fe5761;
+  background-color: #ffc6c9;
+}
+
+.transactions-detail .checkout .img-fluid {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.625rem;
+}
+
+.transactions-detail .checkout .cropped {
+  width: 110px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 1.625rem;
+}
+
+.transactions-detail .checkout .cropped img {
+  margin: -10px 0px 0px 0px;
+}
+
+.transactions-detail .checkout hr {
+  margin: 0;
+  background-color: #e7eaf5;
+  border: 0;
+  opacity: 1;
+}
+
+.transactions-detail .checkout span.purchase-details,
+.transactions-detail .checkout span.payment-details {
+  display: block;
+  font-weight: 500;
+}
+
+.transactions-detail .checkout .btn-whatsapp {
+  padding: 0.75rem 2.875rem;
+  background-color: #4d17e2;
+}
+
+.transactions-detail .checkout .img-checkout {
+  width: 110px;
+  height: 140px;
+}
+
+@media (min-width: 768px) {
+  .transactions-detail .checkout span.purchase-details,
+  .transactions-detail .checkout span.payment-details {
+    float: right;
+  }
+
+  .transactions-detail .checkout .cropped {
+    width: 200px;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 1.625rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .transactions-detail main.main-wrapper {
+    width: 100%;
+  }
+}
+
+/* =================== SETTINGS PAGE CSS =================== */
+.edit-profile {
+  background-color: #fbfcfd;
+}
+
+.edit-profile main.main-wrapper {
+  margin-left: 340px;
+  height: 100%;
+  margin-right: auto;
+  position: relative;
+  padding: 50px 50px 50px 0px;
+}
+
+.edit-profile .bg-card {
+  background-color: #fff;
+  border-radius: 1rem;
+  max-width: 590px;
+}
+.edit-profile main .avatar-overlay:hover {
+  opacity: 1;
+}
+
+.edit-profile main .avatar-overlay {
+  background-color: rgba(12, 20, 90, 0.7);
+  width: 90px;
+  height: 90px;
+  border-radius: 999px;
+  opacity: 0;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+
+.edit-profile .image-upload label {
+  cursor: pointer;
+}
+
+.edit-profile .image-upload input {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+.edit-profile input[type="tel"],
+.edit-profile input[type="email"],
+.edit-profile input[type="text"] {
+  border: 1px solid #0c145a;
+  padding: 0.75rem 1.625rem;
+  color: #0c145a;
+  max-width: 467px;
+}
+
+.edit-profile input[type="tel"]:focus-within,
+.edit-profile input[type="email"]:focus-within,
+.edit-profile input[type="text"]:focus-within {
+  color: #0c145a;
+}
+
+.edit-profile input[type="tel"]::placeholder,
+.edit-profile input[type="email"]::placeholder,
+.edit-profile input[type="text"]::placeholder {
+  color: #ccd0dd;
+}
+
+.edit-profile .btn-save {
+  padding: 0.75rem;
+  background-color: #4d17e2;
+}
+
+.edit-profile .button-group {
+  max-width: 467px;
+}
