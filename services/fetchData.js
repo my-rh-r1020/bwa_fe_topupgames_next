@@ -20,3 +20,14 @@ export async function getFeaturesGame() {
 
   return res.data;
 }
+
+// Fetch Data - Detail Game
+export async function getDetailGame(id) {
+  // API Settings
+  const URL_API = `player/game/${id}`;
+
+  const reqServer = await axios.get(`${ROOT_API}/${API_VERSION}/${URL_API}`),
+    res = reqServer.data;
+
+  return res.data;
+}
