@@ -8,6 +8,7 @@ import CheckoutForm from "../../Forms/Checkout";
 import { getDetailGame } from "../../../services/fetchData";
 
 export default function DetailGamePage() {
+  const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE;
   const { query, isReady } = useRouter(),
     // Use State
     [form, setForm] = useState({ accountPlayer: "" }),
@@ -46,7 +47,13 @@ export default function DetailGamePage() {
 
         <div className="row">
           <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
-            <DetailGameItem data={gameList} />
+            {/* V1 */}
+            {/* <DetailGameItem data={gameList} /> */}
+
+            {/* V2 */}
+            {gameList.map((item, i) => (
+              <DetailGameItem key={i._id} urlImage={`${API_IMAGE}/cover-games/${item.coverGames}`} gameName={item.gameName} category={item.category.name} />
+            ))}
           </div>
 
           <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
