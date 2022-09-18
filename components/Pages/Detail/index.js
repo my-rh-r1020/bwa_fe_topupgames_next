@@ -8,16 +8,19 @@ import CheckoutForm from "../../Forms/Checkout";
 import { getDetailGame } from "../../../services/fetchData";
 
 export default function DetailGamePage() {
-  const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE;
+  // const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE;
   const { query, isReady } = useRouter(),
     // Use State
     [form, setForm] = useState({ accountPlayer: "" }),
-    [gameList, setGameList] = useState([]);
+    [gameList, setGameList] = useState([]),
+    [voucherList, setVoucherList] = useState([]);
 
   // Callback API
   const getDetailGameData = useCallback(async (id) => {
     const data = await getDetailGame(id);
+
     setGameList(data.resultGame);
+    setVoucherList(data.resultVoucher);
   }, []);
 
   useEffect(() => {
@@ -48,17 +51,17 @@ export default function DetailGamePage() {
         <div className="row">
           <div className="col-xl-3 col-lg-4 col-md-5 pb-30 pb-md-0 pe-md-25 text-md-start">
             {/* V1 */}
-            {/* <DetailGameItem data={gameList} /> */}
+            <DetailGameItem data={gameList} />
 
             {/* V2 */}
-            {gameList.map((item, i) => (
+            {/* {gameList.map((item, i) => (
               <DetailGameItem key={i._id} urlImage={`${API_IMAGE}/cover-games/${item.coverGames}`} gameName={item.gameName} category={item.category.name} />
-            ))}
+            ))} */}
           </div>
 
           <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
             {/* Checkout Form */}
-            <CheckoutForm form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <CheckoutForm data={voucherList} form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
           </div>
         </div>
       </div>
