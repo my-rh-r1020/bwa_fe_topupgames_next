@@ -22,11 +22,11 @@ export async function getFeaturesGame() {
 }
 
 // Fetch Data - Detail Game
-export async function getDetailGame(id) {
+export async function getDetailGame(id, token) {
   // API Settings
   const URL_API = `player/game/${id}`;
 
-  const reqServer = await axios.get(`${ROOT_API}/${API_VERSION}/${URL_API}`),
+  const reqServer = await axios.get(`${ROOT_API}/${API_VERSION}/${URL_API}`, { headers: { Authorization: `Bearer ${token}` } }),
     res = reqServer.data;
 
   return res.data;

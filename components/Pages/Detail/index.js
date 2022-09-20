@@ -1,6 +1,7 @@
 // Library
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 // Components
 import DetailGameItem from "../../Parts/DetailGame/detailGameItem";
@@ -8,8 +9,9 @@ import CheckoutForm from "../../Forms/Checkout";
 import { getDetailGame } from "../../../services/fetchData";
 
 export default function DetailGamePage() {
-  // const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE;
   const { query, isReady } = useRouter(),
+    router = useRouter(),
+    token = Cookies.get("token"),
     // Use State
     [form, setForm] = useState({ accountPlayer: "" }),
     [gameList, setGameList] = useState([]),
@@ -26,11 +28,7 @@ export default function DetailGamePage() {
   }, []);
 
   useEffect(() => {
-    if (isReady) {
-      getDetailGameData(query.id);
-    } else {
-      console.log("Router is not ready");
-    }
+    if (isReady) getDetailGameData(query.id);
   }, [isReady]);
 
   // Handle Change
@@ -40,7 +38,10 @@ export default function DetailGamePage() {
 
   // Handle Submit
   const handleSubmit = () => {
-    // router.push("/checkout");
+    // Check Token User
+    if (!token) return router.push("/signin");
+
+    router.push(`/checkout/${query.id}`);
   };
   return (
     <section className="detail pt-lg-60 pb-50">
