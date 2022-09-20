@@ -7,17 +7,17 @@ import Button from "../../Basics/Button";
 import ListPayments from "../../Parts/DetailGame/Payments/listPayments";
 import ListVouchers from "../../Parts/DetailGame/Vouchers/listVouchers";
 
-export default function CheckoutForm({ data, form, handleChange, handleSubmit }) {
+export default function CheckoutForm({ data1, data2, form, handleChange, handleSubmit }) {
   return (
     <form action="/checkout" method="POST">
       {/* Game Account Form */}
       <TextInput label="Game Account" type="text" name="accountPlayer" placeholder="Enter your account game" value={form.accountPlayer} onChange={handleChange} />
 
       {/* Game Voucher List */}
-      <ListVouchers voucherData={data} />
+      <ListVouchers voucherData={data1} />
 
       {/* Game Payment Method */}
-      <ListPayments />
+      <ListPayments paymentData={data2} />
 
       {/* <div className="pb-50">
         <label htmlFor="bankAccount" className="form-label text-lg fw-medium color-palette-1 mb-10">

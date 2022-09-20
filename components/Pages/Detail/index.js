@@ -13,7 +13,8 @@ export default function DetailGamePage() {
     // Use State
     [form, setForm] = useState({ accountPlayer: "" }),
     [gameList, setGameList] = useState([]),
-    [voucherList, setVoucherList] = useState([]);
+    [voucherList, setVoucherList] = useState([]),
+    [paymentList, setPaymentList] = useState([]);
 
   // Callback API
   const getDetailGameData = useCallback(async (id) => {
@@ -21,6 +22,7 @@ export default function DetailGamePage() {
 
     setGameList(data.resultGame);
     setVoucherList(data.resultVoucher);
+    setPaymentList(data.resultPayment);
   }, []);
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export default function DetailGamePage() {
 
           <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
             {/* Checkout Form */}
-            <CheckoutForm data={voucherList} form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <CheckoutForm data1={voucherList} data2={paymentList} form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
           </div>
         </div>
       </div>
