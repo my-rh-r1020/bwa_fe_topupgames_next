@@ -1,5 +1,7 @@
-import Head from "next/head";
 import React from "react";
+import Head from "next/head";
+
+// Component
 import SignInPage from "../components/Pages/SignIn";
 
 export default function Signin() {
@@ -16,4 +18,15 @@ export default function Signin() {
       <SignInPage />
     </>
   );
+}
+
+// Check Token Player
+export async function getServerSideProps(context) {
+  const { token } = context.req.cookies;
+
+  if (token) {
+    return { redirect: { destination: "/", permanent: false } };
+  }
+
+  return { props: { data: [] } };
 }

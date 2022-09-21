@@ -1,5 +1,5 @@
 // Library
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Cookies from "js-cookie";
@@ -7,11 +7,14 @@ import { toast } from "react-toastify";
 
 // Components
 import SignInForm from "../../Forms/SignIn";
-import { postData, postSignIn } from "../../../services/fetchData";
+import { postData } from "../../../services/fetchData";
 
 export default function SignInPage() {
+  const ROOT_API = process.env.NEXT_PUBLIC_API_PRO,
+    API_VERSION = "api/v1-player";
+
   // Use State
-  const [form, setForm] = useState({ email: "", password: "" }),
+  const [form, setForm] = useState({ username: "", password: "" }),
     router = useRouter();
 
   // Handle Router
@@ -28,23 +31,25 @@ export default function SignInPage() {
   const handleSubmit = async () => {
     try {
       // Fetch API
-      // const resData = await postData(`api/v1-player/player/signin`, form);
+      const res = await postData(`${ROOT_API}/${API_VERSION}/player/signin`, form);
 
-      // Create Token User
-      Cookies.set("token", resData.data.token, { expires: 3 });
+      if (res) {
+        // Create Token User
+        Cookies.set("token", res.data.data.token, { expires: 3 });
 
-      // Redirect to Landing Page
-      router.push("/");
+        // Redirect to Landing Page
+        router.push("/");
 
-      toast.success("Successfully Sign In. Please Wait", {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
+        toast.success("Successfully Sign In. Please Wait", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     } catch (err) {}
   };
 

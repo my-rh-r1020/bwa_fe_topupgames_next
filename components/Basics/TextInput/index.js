@@ -4,7 +4,7 @@ export default function TextInput({ label, type, name, placeholder, value, onCha
   return (
     <div className="pt-30">
       <label className="form-label text-lg fw-medium color-palette-1 mb-10">{label}</label>
-      <input type={type} className="form-control rounded-pill text-lg" id={name} aria-describedby={name} name={name} value={value} placeholder={placeholder} onChange={onChange} />
+      <input type={type} className="form-control rounded-pill text-lg" name={name} value={value} placeholder={placeholder} onChange={onChange} />
     </div>
   );
 }

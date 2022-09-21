@@ -42,11 +42,11 @@ export async function getDetailGame(id, token) {
 }
 
 // Fetch Data - POST Sign In
-export async function postSignIn(form, payload, token) {
+export async function postSignIn(form, token) {
   // API Settings
   const URL_API = "player/signin";
 
-  const reqServer = await axios.post(`${ROOT_API}/${API_VERSION}/${URL_API}`, form, payload, { headers: { Authorization: `Bearer ${token}` } }),
+  const reqServer = await axios.post(`${ROOT_API}/${API_VERSION}/${URL_API}`, form, { headers: { Authorization: `Bearer ${token}` } }),
     res = reqServer.data;
 
   return res.data;

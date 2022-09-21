@@ -8,7 +8,7 @@ export default function SignInForm({ form, handleChange, handleSubmit, handleRou
   return (
     <form>
       {/* Email */}
-      <TextInput label="Email Address" type="email" name="email" placeholder="Enter your email address" value={form.email} onChange={handleChange} />
+      <TextInput label="Username" type="text" name="username" value={form.username} placeholder="Type your username" onChange={handleChange} />
 
       {/* Password */}
       <TextInput label="Password (6 characters)" type="password" name="password" value={form.password} placeholder="Type your password" onChange={handleChange} />

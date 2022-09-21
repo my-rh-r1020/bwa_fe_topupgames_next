@@ -4,6 +4,8 @@ import Head from "next/head";
 import "../styles/globals.css";
 import "../styles/myweb.css";
 import "../styles/utilities.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps }) {
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" async></script>
       </Head>
       <Component {...pageProps} />
+      <ToastContainer position="top-right" autoClose={2500} />
     </>
   );
 }
