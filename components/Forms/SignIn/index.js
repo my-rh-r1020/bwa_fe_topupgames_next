@@ -6,7 +6,7 @@ import TextInput from "../../Basics/TextInput";
 
 export default function SignInForm({ form, handleChange, handleSubmit, handleRouter }) {
   return (
-    <form action="">
+    <form>
       {/* Email */}
       <TextInput label="Email Address" type="email" name="email" placeholder="Enter your email address" value={form.email} onChange={handleChange} />
 

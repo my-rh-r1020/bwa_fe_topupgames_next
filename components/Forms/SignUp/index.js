@@ -6,7 +6,7 @@ import TextInput from "../../Basics/TextInput";
 
 export default function SignUpForm({ form, handleChange, handleSubmit, handleRouter }) {
   return (
-    <form action="">
+    <form>
       {/* Full Name */}
       <TextInput label="Full Name" type="text" name="name" placeholder="Enter your name" value={form.name} onChange={handleChange} />
 

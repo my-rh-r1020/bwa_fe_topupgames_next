@@ -1,10 +1,13 @@
 // Library
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 // Components
 import SignInForm from "../../Forms/SignIn";
+import { postData, postSignIn } from "../../../services/fetchData";
 
 export default function SignInPage() {
   // Use State
@@ -22,7 +25,28 @@ export default function SignInPage() {
   };
 
   // Handle Submit
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    try {
+      // Fetch API
+      // const resData = await postData(`api/v1-player/player/signin`, form);
+
+      // Create Token User
+      Cookies.set("token", resData.data.token, { expires: 3 });
+
+      // Redirect to Landing Page
+      router.push("/");
+
+      toast.success("Successfully Sign In. Please Wait", {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } catch (err) {}
+  };
 
   return (
     <section className="sign-in mx-auto">
