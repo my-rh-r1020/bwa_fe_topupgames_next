@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 
 // Component
 import SignupForm from "../../Forms/SignUp";
-import { useRouter } from "next/router";
+import { postData } from "../../../services/fetchData";
 
 export default function SignUpPage() {
+  const ROOT_API = process.env.NEXT_PUBLIC_API_PRO,
+    API_VERSION = "api/v1-player";
+
   const router = useRouter(),
     // Use State
     [form, setForm] = useState({ name: "", username: "", email: "", password: "" });
@@ -21,8 +26,27 @@ export default function SignUpPage() {
   };
 
   // Handle Submit
-  const handleSubmit = () => {
-    router.push("/signup-success");
+  const handleSubmit = async () => {
+    try {
+      // Fetch API
+      const res = await postData(`${ROOT_API}/${API_VERSION}/player/signup`, form);
+
+      if (res.data) {
+        // Message Toast
+        toast.success("Registration is Success. Please Sign In ...", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        // Redirect to Sign In
+        router.push("/signup-success");
+      }
+    } catch (err) {}
   };
 
   return (
