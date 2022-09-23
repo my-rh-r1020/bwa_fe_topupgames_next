@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function MenuLink({ className, nameIcon, sidebarName }) {
+export default function MenuLink({ className, nameIcon, href, sidebarName }) {
   return (
     <div className={className}>
       <img src={`/icons/sidebar/${nameIcon}.svg`} className="icon me-3" />

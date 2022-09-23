@@ -38,7 +38,7 @@ export default function SignInPage() {
         Cookies.set("token", res.data.data.token, { expires: 3 });
 
         // Redirect to Landing Page
-        router.push("/");
+        router.push("/member/dashboard");
 
         toast.success("Successfully Sign In. Please Wait", {
           position: "top-right",

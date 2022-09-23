@@ -2,6 +2,7 @@
 import Head from "next/head";
 
 // Component
+import TransactionDetailPage from "../../components/Pages/Member/transaction-detail";
 
 export default function TransactionDetail() {
   return (
@@ -14,6 +15,7 @@ export default function TransactionDetail() {
       </Head>
 
       {/* Transaction Detail */}
+      <TransactionDetailPage />
     </>
   );
 }

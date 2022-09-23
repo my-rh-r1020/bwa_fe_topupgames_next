@@ -1,6 +1,8 @@
 // Library
 import Head from "next/head";
 
+import DashboardPage from "../../components/Pages/Member/dashboard";
+
 export default function Dashboard() {
   return (
     <>
@@ -12,6 +14,7 @@ export default function Dashboard() {
       </Head>
 
       {/* Dashboard */}
+      <DashboardPage />
     </>
   );
 }
