@@ -31,7 +31,7 @@ export default function ListGames() {
         <div className="d-flex flex-row flex-lg-wrap overflow-setting justify-content-lg-between gap-lg-3 gap-4" data-aos="fade-up">
           {/* V1 */}
           {gameList.map((item, i) => (
-            <GameContent key={i.id} href={`game/${item._id}`} urlImage={`${API_IMAGE}/cover-games/${item.coverGames}`} gameName={item.gameName} gameCategory={item.category.name} />
+            <GameContent key={i._id} href={`game/${item._id}`} urlImage={`${API_IMAGE}/cover-games/${item.coverGames}`} gameName={item.gameName} gameCategory={item.category.name} />
           ))}
         </div>
       </div>

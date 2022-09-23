@@ -1,4 +1,8 @@
+// Library
 import React from "react";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 // Components
 import ProfileUser from "./sidebarProfile";
@@ -6,6 +10,26 @@ import MenuLink from "./menuLink";
 import SidebarFooter from "./sidebarFooter";
 
 export default function SidebarNavigation() {
+  const router = useRouter();
+
+  const handleSignout = () => {
+    // Remove token
+    Cookies.remove("token");
+
+    toast.success("Successfully Sign Out", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    // Redirect to Sign In
+    router.push("/signin");
+  };
+
   return (
     <section className="sidebar">
       <div className="content pt-50 pb-30 ps-30">

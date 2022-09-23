@@ -1,11 +1,42 @@
 // Library
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 // Import Component
 import NavLink from "../NavLink";
+import Button from "../../Basics/Button";
 
 export default function Navbar() {
+  const router = useRouter(),
+    signinPath = "/signin",
+    [token, setToken] = useState("");
+
+  useEffect(() => {
+    return setToken(Cookies.get("token"));
+  });
+
+  // Handle Signout
+  const handleSignout = () => {
+    // Remove token
+    Cookies.remove("token");
+
+    toast.success("Successfully Sign Out", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    // Redirect to Sign In
+    router.push("/signin");
+  };
+
   return (
     <section>
       <nav className="navbar navbar-expand-lg navbar-light bg-light bg-white pt-lg-40 pb-lg-40 pt-30 pb-50">
@@ -25,8 +56,34 @@ export default function Navbar() {
               <NavLink href="#games" title="Games" className="nav-link" />
               <NavLink href="#story" title="Stories" className="nav-link" />
               <NavLink href="#" title="Our Reviews" className="nav-link" />
-              {/* Signin Button */}
-              <NavLink href="/signin" title="Sign In" className="btn btn-sign-in d-flex justify-content-center ms-lg-2 rounded-pill" />
+
+              {/* Signin Token Check */}
+              {router.pathname !== signinPath && (
+                <li className={`${token ? "nav-item my-auto dropdown d-flex" : "nav-item my-auto"}`}>
+                  {token ? (
+                    <div>
+                      <a className="dropdown-toggle ms-lg-40" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/images/avatar-1.png" className="rounded-circle" width="50" height="50" alt="avatar" />
+                      </a>
+
+                      <ul className="dropdown-menu border-0" aria-labelledby="dropdownMenuLink">
+                        <Link href="/member/dashboard">
+                          <a className="dropdown-item text-lg color-palette-2">Dashboard</a>
+                        </Link>
+                        <Link href="#">
+                          <a className="dropdown-item text-lg color-palette-2">My Account</a>
+                        </Link>
+                        <Button buttonName="Sign Out" className="dropdown-item text-lg color-palette-2" action={handleSignout} />
+                        {/* <Link href="#">
+                          <a className="dropdown-item text-lg color-palette-2">Log Out</a>
+                        </Link> */}
+                      </ul>
+                    </div>
+                  ) : (
+                    <NavLink href="/signin" title="Sign In" className="btn btn-sign-in d-flex justify-content-center ms-lg-2 rounded-pill" />
+                  )}
+                </li>
+              )}
             </ul>
           </div>
         </div>
