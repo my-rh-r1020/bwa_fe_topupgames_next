@@ -1,25 +1,20 @@
 // Library
 import axios from "axios";
 
-// ========================== FETCH DATA V1 ======================
-
-// Fetch Data - GET API Based
-export function getData(url, params, token) {
-  return axios.get(`${url}`, { params, headers: { Authorization: `Bearer ${token}` } });
-}
+// =============== API SERVICES - SIGN IN & SIGN UP ===============
 
 // Fetch Data- POST API Based
 export async function postData(url, payload, token) {
   return await axios.post(`${url}`, payload, { headers: { Authorization: `Bearer ${token}` } });
 }
 
-// ========================== FETCH DATA V2 ======================
+// ============ API SERVICES - FEATURES & DETAIL GAME =============
 
 // Global Variables
 const ROOT_API = process.env.NEXT_PUBLIC_API_PRO,
   API_VERSION = "api/v1-player";
 
-// Fetch Data - Features Game
+// Features Game
 export async function getFeaturesGame() {
   // API Settings
   const URL_API = "player/landing";
@@ -30,7 +25,7 @@ export async function getFeaturesGame() {
   return res.data;
 }
 
-// Fetch Data - Detail Game
+// Detail Game
 export async function getDetailGame(id, token) {
   // API Settings
   const URL_API = `player/game/${id}`;
@@ -41,13 +36,19 @@ export async function getDetailGame(id, token) {
   return res.data;
 }
 
-// Fetch Data - POST Sign In
-export async function postSignIn(form, token) {
-  // API Settings
-  const URL_API = "player/signin";
+// =========== API SERVICES -
+// POST Sign In
+// export async function postSignIn(form, token) {
+//   // API Settings
+//   const URL_API = "player/signin";
 
-  const reqServer = await axios.post(`${ROOT_API}/${API_VERSION}/${URL_API}`, form, { headers: { Authorization: `Bearer ${token}` } }),
-    res = reqServer.data;
+//   const reqServer = await axios.post(`${ROOT_API}/${API_VERSION}/${URL_API}`, form, { headers: { Authorization: `Bearer ${token}` } }),
+//     res = reqServer.data;
 
-  return res.data;
-}
+//   return res.data;
+// }
+
+// Fetch Data - GET API Based
+// export function getData(url, params, token) {
+//   return axios.get(`${url}`, { params, headers: { Authorization: `Bearer ${token}` } });
+// }

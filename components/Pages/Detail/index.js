@@ -11,7 +11,7 @@ import { getDetailGame } from "../../../services/fetchData";
 export default function DetailGamePage() {
   const { query, isReady } = useRouter(),
     router = useRouter(),
-    token = Cookies.get("token"),
+    token = Cookies.get("xpToken"),
     // Use State
     [form, setForm] = useState({ accountPlayer: "" }),
     [gameList, setGameList] = useState([]),
@@ -38,7 +38,7 @@ export default function DetailGamePage() {
 
   // Handle Submit
   const handleSubmit = () => {
-    // Check Token User
+    // Check Token Player
     if (!token) return router.push("/signin");
 
     router.push(`/checkout/${query.id}`);

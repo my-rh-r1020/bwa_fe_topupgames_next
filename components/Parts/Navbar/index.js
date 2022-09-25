@@ -4,19 +4,38 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import jwt_decode from "jwt-decode";
 
 // Import Component
 import NavLink from "../NavLink";
 import Button from "../../Basics/Button";
 
 export default function Navbar() {
+  const API_IMAGE = process.env.NEXT_PUBLIC_API_PRO;
+
   const router = useRouter(),
     signinPath = "/signin",
-    [token, setToken] = useState("");
+    [isToken, setToken] = useState("");
+
+  // Handle Token
+  const handleTokenProcess = () => {
+    // Get Token Cookies
+    const xtoken = Cookies.get("xpToken");
+
+    if (xtoken) {
+      // Original Token Conversion
+      const token = atob(xtoken);
+
+      // Decode Token
+      const decodeTkn = jwt_decode(token);
+
+      setToken(decodeTkn);
+    }
+  };
 
   useEffect(() => {
-    return setToken(Cookies.get("token"));
-  });
+    handleTokenProcess();
+  }, []);
 
   // Handle Signout
   const handleSignout = () => {
@@ -59,11 +78,11 @@ export default function Navbar() {
 
               {/* Signin Token Check */}
               {router.pathname !== signinPath && (
-                <li className={`${token ? "nav-item my-auto dropdown d-flex" : "nav-item my-auto"}`}>
-                  {token ? (
+                <li className={`${isToken ? "nav-item my-auto dropdown d-flex" : "nav-item my-auto"}`}>
+                  {isToken ? (
                     <div>
                       <a className="dropdown-toggle ms-lg-40" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="/images/avatar-1.png" className="rounded-circle" width="50" height="50" alt="avatar" />
+                        <img src={`${API_IMAGE}/uploads/avatar/${isToken.avatar}`} className="rounded-circle" width="50" height="50" alt="avatar" />
                       </a>
 
                       <ul className="dropdown-menu border-0" aria-labelledby="dropdownMenuLink">

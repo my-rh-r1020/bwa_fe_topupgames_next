@@ -33,9 +33,14 @@ export default function SignInPage() {
       // Fetch API
       const res = await postData(`${ROOT_API}/${API_VERSION}/player/signin`, form);
 
-      if (res) {
+      if (res.data) {
+        // Get Player Token
+        const token = res.data.data.token,
+          // Random Token Conversion
+          tokenBase64 = btoa(token);
+
         // Create Token User
-        Cookies.set("token", res.data.data.token, { expires: 3 });
+        Cookies.set("xpToken", tokenBase64, { expires: 3 });
 
         // Redirect to Landing Page
         router.push("/member/dashboard");
