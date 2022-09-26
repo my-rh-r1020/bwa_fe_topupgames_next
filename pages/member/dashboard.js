@@ -18,3 +18,15 @@ export default function Dashboard() {
     </>
   );
 }
+
+// Private Route
+export async function getServerSideProps(context) {
+  const { xpToken } = context.req.cookies;
+
+  // Check Token Player
+  if (!xpToken) {
+    return { redirect: { destination: "/signin", permanent: false } };
+  }
+
+  return { props: { data: [] } };
+}

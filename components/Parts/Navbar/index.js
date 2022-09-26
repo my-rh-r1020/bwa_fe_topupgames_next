@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
-import jwt_decode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 
 // Import Component
 import NavLink from "../NavLink";
 import Button from "../../Basics/Button";
 
 export default function Navbar() {
-  const API_IMAGE = process.env.NEXT_PUBLIC_API_PRO;
+  const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE;
 
   const router = useRouter(),
     signinPath = "/signin",
@@ -27,7 +27,7 @@ export default function Navbar() {
       const token = atob(xtoken);
 
       // Decode Token
-      const decodeTkn = jwt_decode(token);
+      const decodeTkn = jwtDecode(token);
 
       setToken(decodeTkn);
     }
@@ -40,7 +40,7 @@ export default function Navbar() {
   // Handle Signout
   const handleSignout = () => {
     // Remove token
-    Cookies.remove("token");
+    Cookies.remove("xpToken");
 
     toast.success("Successfully Sign Out", {
       position: "top-right",
@@ -81,11 +81,11 @@ export default function Navbar() {
                 <li className={`${isToken ? "nav-item my-auto dropdown d-flex" : "nav-item my-auto"}`}>
                   {isToken ? (
                     <div>
-                      <a className="dropdown-toggle ms-lg-40" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src={`${API_IMAGE}/uploads/avatar/${isToken.avatar}`} className="rounded-circle" width="50" height="50" alt="avatar" />
+                      <a className="dropdown-toggle ms-lg-40 show" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="true">
+                        <img src={`${API_IMAGE}/avatar/${isToken.avatar}`} className="rounded-circle" width="50" height="50" alt="avatar" />
                       </a>
 
-                      <ul className="dropdown-menu border-0" aria-labelledby="dropdownMenuLink">
+                      <ul className="dropdown-menu border-0 show" aria-labelledby="navbarDropdown" data-bs-popper="none">
                         <Link href="/member/dashboard">
                           <a className="dropdown-item text-lg color-palette-2">Dashboard</a>
                         </Link>

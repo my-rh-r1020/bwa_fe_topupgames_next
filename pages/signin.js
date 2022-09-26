@@ -20,10 +20,11 @@ export default function Signin() {
   );
 }
 
-// Check Token Player
+// Private Route
 export async function getServerSideProps(context) {
   const { token } = context.req.cookies;
 
+  // Check Token Player
   if (token) {
     return { redirect: { destination: "/", permanent: false } };
   }

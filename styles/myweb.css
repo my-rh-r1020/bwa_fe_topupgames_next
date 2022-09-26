@@ -227,6 +227,11 @@ footer ul li a:hover {
     padding-left: 1.25rem;
   }
 
+  /* .navbar .vertical-line {
+    border: 1px solid rgba(231, 234, 245, 1);
+    height: 40px;
+  } */
+
   /* Header */
   .header .underline-blue {
     text-decoration: none;

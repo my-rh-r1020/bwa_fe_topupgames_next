@@ -1,8 +1,9 @@
 // Library
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import Cookies from "js-cookie";
+import jwtDecode from "jwt-decode";
 
 // Components
 import ProfileUser from "./sidebarProfile";
@@ -10,7 +11,25 @@ import MenuLink from "./menuLink";
 import SidebarFooter from "./sidebarFooter";
 
 export default function SidebarNavigation() {
-  const router = useRouter();
+  const router = useRouter(),
+    [token, setToken] = useState("");
+
+  // Handle Token Process
+  const handleTokenProcess = () => {
+    // Get Token Cookies
+    const xtoken = Cookies.get("xpToken"),
+      // Token Conversion
+      token = atob(xtoken);
+
+    // Decode Token
+    const decodeTkn = jwtDecode(token);
+
+    setToken(decodeTkn);
+  };
+
+  useEffect(() => {
+    handleTokenProcess();
+  }, []);
 
   const handleSignout = () => {
     // Remove token
@@ -34,7 +53,7 @@ export default function SidebarNavigation() {
     <section className="sidebar">
       <div className="content pt-50 pb-30 ps-30">
         {/* Profile */}
-        <ProfileUser />
+        <ProfileUser dataPlayer={token} />
 
         {/* Menu Nav */}
         <div className="menus">
