@@ -1,10 +1,10 @@
 import React from "react";
 import { NumberFormatBase } from "react-number-format";
 
-export default function VoucherItems({ htmlFor, id, name, value, coinQuantity, coinName, price }) {
+export default function VoucherItems({ key, onChange, id, value, coinQuantity, coinName, price }) {
   return (
-    <label className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10" htmlFor={htmlFor}>
-      <input className="d-none" type="radio" id={id} name={name} value={value} />
+    <label key={key} className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10" onChange={onChange}>
+      <input className="d-none" type="radio" id={id} name="topup" value={value} />
       <div className="detail-card">
         <div className="d-flex justify-content-between">
           <p className="text-3xl color-palette-1 m-0">

@@ -1,7 +1,6 @@
 // Library
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
 
 // Components
 import DetailGameItem from "../../Parts/DetailGame/detailGameItem";
@@ -10,10 +9,7 @@ import { getDetailGame } from "../../../services/fetchData";
 
 export default function DetailGamePage() {
   const { query, isReady } = useRouter(),
-    router = useRouter(),
-    token = Cookies.get("xpToken"),
     // Use State
-    [form, setForm] = useState({ accountPlayer: "" }),
     [gameList, setGameList] = useState([]),
     [voucherList, setVoucherList] = useState([]),
     [paymentList, setPaymentList] = useState([]);
@@ -22,7 +18,11 @@ export default function DetailGamePage() {
   const getDetailGameData = useCallback(async (id) => {
     const data = await getDetailGame(id);
 
+    // Game Data
     setGameList(data.resultGame);
+    localStorage.setItem("game-data", JSON.stringify(data.resultGame));
+
+    // Voucher & Payment Data
     setVoucherList(data.resultVoucher);
     setPaymentList(data.resultPayment);
   }, []);
@@ -31,18 +31,6 @@ export default function DetailGamePage() {
     if (isReady) getDetailGameData(query.id);
   }, [isReady]);
 
-  // Handle Change
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  // Handle Submit
-  const handleSubmit = () => {
-    // Check Token Player
-    if (!token) return router.push("/signin");
-
-    router.push(`/checkout/${query.id}`);
-  };
   return (
     <section className="detail pt-lg-60 pb-50">
       <div className="container-xxl container-fluid">
@@ -64,7 +52,7 @@ export default function DetailGamePage() {
 
           <div className="col-xl-9 col-lg-8 col-md-7 ps-md-25">
             {/* Checkout Form */}
-            <CheckoutForm data1={voucherList} data2={paymentList} form={form} handleChange={handleChange} handleSubmit={handleSubmit} />
+            <CheckoutForm data1={voucherList} data2={paymentList} />
           </div>
         </div>
       </div>
