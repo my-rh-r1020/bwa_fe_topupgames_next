@@ -1,5 +1,5 @@
 // Library
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -8,7 +8,30 @@ import Button from "../../Basics/Button";
 import TransactionList from "../../Parts/Member/Transactions/transactionList";
 
 export default function CheckoutPage() {
-  const router = useRouter();
+  const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE,
+    router = useRouter(),
+    // Use State
+    [checkoutGame, setCheckoutGame] = useState({}),
+    [checkoutTopUp, setCheckoutTopUp] = useState({});
+
+  const getCheckoutData = () => {
+    // Get Game Data from localStorage
+    const gameDataStorage = localStorage.getItem("game-data"),
+      // Parse to Object
+      gameStorageParse = JSON.parse(gameDataStorage);
+
+    // Get TopUp Data from LocalStorage
+    const topupDataStorage = localStorage.getItem("topup-data"),
+      topupStorageParse = JSON.parse(topupDataStorage);
+
+    // Set to UseState
+    setCheckoutGame(gameStorageParse);
+    setCheckoutTopUp(topupStorageParse);
+  };
+
+  useEffect(() => {
+    getCheckoutData();
+  }, []);
 
   // Handle Router
   const handleRouter = () => {
@@ -28,7 +51,23 @@ export default function CheckoutPage() {
         <div className="title-text pt-md-50 pt-0">
           <h2 className="text-4xl fw-bold color-palette-1 mb-10">Checkout Now</h2>
         </div>
-        <div className="game-checkout d-flex flex-row align-items-center pt-md-50 pb-md-50 pt-30 pb-30">
+
+        {checkoutGame.map((gameItem) => (
+          <>
+            <div key={gameItem._id} className="game-checkout d-flex flex-row align-items-center pt-md-50 pb-md-50 pt-30 pb-30">
+              <div className="pe-4">
+                <div className="cropped">
+                  <img src={`${API_IMAGE}/cover-games/${gameItem.coverGames}`} className="img-fluid" alt="" />
+                </div>
+              </div>
+              <div>
+                <p className="fw-bold text-xl color-palette-1 mb-10">{gameItem.gameName}</p>
+                <p className="color-palette-2 m-0">Category: {gameItem.category.name}</p>
+              </div>
+            </div>
+          </>
+        ))}
+        {/* <div className="game-checkout d-flex flex-row align-items-center pt-md-50 pb-md-50 pt-30 pb-30">
           <div className="pe-4">
             <div className="cropped">
               <img src="/images/Thumbnail-3.png" className="img-fluid" alt="" />
@@ -40,9 +79,10 @@ export default function CheckoutPage() {
               <br />
               The New Battle 2021
             </p>
-            <p className="color-palette-2 m-0">Category: Mobile</p>
+            <p className="color-palette-2 m-0">Category: {""}</p>
           </div>
-        </div>
+        </div> */}
+
         <hr />
         <div className="purchase pt-md-50 pt-30">
           <h2 className="fw-bold text-xl color-palette-1 mb-20">Purchase Details</h2>

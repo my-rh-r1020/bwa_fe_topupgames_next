@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function PaymentItems({ key, onChange, id, value, paymentMethod, paymentName }) {
+export default function PaymentItems({ key, paymentId, onChange, id, value, paymentMethod, paymentName }) {
   return (
-    <label key={key} className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10" onChange={onChange}>
+    <label key={key} className="col-lg-4 col-sm-6 ps-md-15 pe-md-15 pt-md-15 pb-md-15 pt-10 pb-10" htmlFor={paymentId} onChange={onChange}>
       <input className="d-none" type="radio" id={id} name="paymentMethod" value={value} />
       <div className="detail-card">
         <div className="d-flex justify-content-between">

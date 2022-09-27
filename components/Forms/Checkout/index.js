@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 // Components
 import TextInput from "../../Basics/TextInput";
@@ -36,10 +37,22 @@ export default function CheckoutForm({ data1, data2 }) {
   // Handle Submit
   const handleSubmit = () => {
     // Check Token Player
-    if (!token) return router.push("/signin");
+    if (!token) {
+      toast.error("Please Sign In Before Checkout", {
+        position: "top-right",
+        autoClose: 2500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+
+      return router.push("/signin");
+    }
 
     if (form === "" || voucherList === {} || paymentList === {}) {
-      alert("Please filled this form");
+      toast.error("Please filled this form");
     } else {
       const data = {
         form,
@@ -64,6 +77,7 @@ export default function CheckoutForm({ data1, data2 }) {
             data1.map((voucher, i) => (
               <VoucherItems
                 key={i._id}
+                voucherId={voucher._id}
                 onChange={() => handleVoucherItemChange(voucher)}
                 id={voucher._id}
                 value={voucher._id}
@@ -92,7 +106,7 @@ export default function CheckoutForm({ data1, data2 }) {
           <fieldset id="paymentMethod">
             <div className="row justify-content-between">
               {data2.map((payment, i) => (
-                <PaymentItems key={i._id} onChange={() => handlePaymentItemChange(payment)} id={payment._id} value={payment._id} paymentMethod={payment.type} paymentName={`Bank ${payment.banks.namaBank}`} />
+                <PaymentItems key={i._id} paymentId={payment._id} onChange={() => handlePaymentItemChange(payment)} id={payment._id} value={payment._id} paymentMethod={payment.type} paymentName={`Bank ${payment.banks.namaBank}`} />
               ))}
               <div className="col-lg-4 col-sm-6"></div>
             </div>
