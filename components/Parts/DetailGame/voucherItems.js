@@ -1,5 +1,4 @@
 import React from "react";
-import { NumberFormatBase } from "react-number-format";
 
 export default function VoucherItems({ key, voucherId, onChange, id, value, coinQuantity, coinName, price }) {
   return (

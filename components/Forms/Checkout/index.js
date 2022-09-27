@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import numeral from "numeral";
 
 // Components
 import TextInput from "../../Basics/TextInput";
@@ -83,7 +84,7 @@ export default function CheckoutForm({ data1, data2 }) {
                 value={voucher._id}
                 coinQuantity={voucher.nominal.coinQuantity}
                 coinName={voucher.nominal.coinName}
-                price={`Rp ${voucher.nominal.price}`}
+                price={`Rp ${numeral(voucher.nominal.price).format("0,0")}`}
               />
             ))
           ) : (
