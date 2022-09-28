@@ -9,6 +9,7 @@ import jwtDecode from "jwt-decode";
 import ProfileUser from "./sidebarProfile";
 import MenuLink from "./menuLink";
 import SidebarFooter from "./sidebarFooter";
+import Link from "next/link";
 
 export default function SidebarNavigation() {
   const router = useRouter(),
@@ -18,7 +19,7 @@ export default function SidebarNavigation() {
   const handleTokenProcess = () => {
     // Get Token Cookies
     const xtoken = Cookies.get("xpToken"),
-      // Token Conversion
+      // Token Parse
       token = atob(xtoken);
 
     // Decode Token
@@ -33,7 +34,7 @@ export default function SidebarNavigation() {
 
   const handleSignout = () => {
     // Remove token
-    Cookies.remove("token");
+    Cookies.remove("xpToken");
 
     toast.success("Successfully Sign Out", {
       position: "top-right",
@@ -63,7 +64,16 @@ export default function SidebarNavigation() {
           <MenuLink href="#" className="item mb-30" nameIcon="ic-card" sidebarName="Card" />
           <MenuLink href="#" className="item mb-30" nameIcon="ic-reward" sidebarName="Rewards" />
           <MenuLink href="./settings" className="item mb-30" nameIcon="ic-setting" sidebarName="Settings" />
-          <MenuLink href="/signin" className="item mb-30" nameIcon="ic-logout" sidebarName="Log Out" />
+          <div className="item mb-30">
+            <img src={`/icons/sidebar/ic-logout.svg`} className="icon me-3" />
+            <p className="item-title m-0">
+              <Link href="/signin">
+                <a className="text-lg text-decoration-none" onClick={handleSignout}>
+                  Sign Out
+                </a>
+              </Link>
+            </p>
+          </div>
         </div>
 
         {/* Footer */}
