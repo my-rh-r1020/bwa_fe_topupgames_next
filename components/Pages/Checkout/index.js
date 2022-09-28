@@ -11,7 +11,7 @@ export default function CheckoutPage() {
   const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE,
     router = useRouter(),
     // Use State
-    [checkoutGame, setCheckoutGame] = useState({});
+    [checkoutGame, setCheckoutGame] = useState([]);
 
   const getGameCheckout = () => {
     // Get Game Data from localStorage
@@ -28,7 +28,7 @@ export default function CheckoutPage() {
   }, []);
 
   // Handle Router
-  const handleRouter = () => {
+  const handleSubmit = () => {
     router.push("/checkout/success-checkout");
   };
 
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
           <span className="checkmark"></span>
         </label>
         <div className="d-md-block d-flex flex-column w-100 pt-50">
-          <Button buttonName="Confirm Payment" className="btn btn-confirm-payment rounded-pill fw-medium text-white border-0 text-lg" action={handleRouter} />
+          <Button buttonName="Confirm Payment" className="btn btn-confirm-payment rounded-pill fw-medium text-white border-0 text-lg" action={handleSubmit} />
         </div>
       </div>
     </section>

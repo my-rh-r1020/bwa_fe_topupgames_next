@@ -20,6 +20,8 @@ export default function TransactionsList() {
       type: "",
       banks: {
         namaBank: "",
+        noRekening: "",
+        namaRekening: "",
       },
     },
   });
@@ -55,11 +57,11 @@ export default function TransactionsList() {
 
       <div className="payment pt-md-50 pb-md-50 pt-10 pb-10">
         <h2 className="fw-bold text-xl color-palette-1 mb-20">Payment Informations</h2>
-        <TransactionList transactionPoint="Your Account Name" transactionItem="Masayoshi Angga Zero" />
+        {/* <TransactionList transactionPoint="Your Account Name" transactionItem="Miyamoto" /> */}
         <TransactionList transactionPoint="Type" transactionItem={checkoutTopUp.paymentList.type} />
         <TransactionList transactionPoint="Bank Name" transactionItem={checkoutTopUp.paymentList.banks.namaBank} />
-        <TransactionList transactionPoint="Bank Account Name" transactionItem="PT Store GG Indonesia" />
-        <TransactionList transactionPoint="Bank Number" transactionItem="1800 - 9090 - 2021" />
+        <TransactionList transactionPoint="Bank Account Name" transactionItem={checkoutTopUp.paymentList.banks.namaRekening} />
+        <TransactionList transactionPoint="Bank Number" transactionItem={checkoutTopUp.paymentList.banks.noRekening} />
       </div>
     </div>
   );

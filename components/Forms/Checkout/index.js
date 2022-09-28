@@ -102,17 +102,23 @@ export default function CheckoutForm({ data1, data2 }) {
       {data1.length === 0 ? (
         ""
       ) : (
-        <div className="pb-md-50 pb-20">
-          <p className="text-lg fw-medium color-palette-1 mb-md-10 mb-0">Payment Method</p>
-          <fieldset id="paymentMethod">
-            <div className="row justify-content-between">
-              {data2.map((payment, i) => (
-                <PaymentItems key={i._id} paymentId={payment._id} onChange={() => handlePaymentItemChange(payment)} id={payment._id} value={payment._id} paymentMethod={payment.type} paymentName={`Bank ${payment.banks.namaBank}`} />
-              ))}
-              <div className="col-lg-4 col-sm-6"></div>
-            </div>
-          </fieldset>
-        </div>
+        <>
+          <div className="pb-md-50 pb-20">
+            <p className="text-lg fw-medium color-palette-1 mb-md-10 mb-0">Payment Method</p>
+            <fieldset id="paymentMethod">
+              <div className="row justify-content-between">
+                {data2.map((payment, i) => (
+                  <PaymentItems key={i._id} paymentId={payment._id} onChange={() => handlePaymentItemChange(payment)} id={payment._id} value={payment._id} paymentMethod={payment.type} paymentName={`Bank ${payment.banks.namaBank}`} />
+                ))}
+                <div className="col-lg-4 col-sm-6"></div>
+              </div>
+            </fieldset>
+          </div>
+
+          <div className="d-sm-block d-flex flex-column w-100">
+            <Button buttonName="Checkout Now" className="btn btn-submit rounded-pill fw-medium text-white border-0 text-lg" action={handleSubmit} />
+          </div>
+        </>
       )}
 
       {/* <div className="pb-50">
@@ -121,9 +127,6 @@ export default function CheckoutForm({ data1, data2 }) {
         </label>
         <input type="text" className="form-control rounded-pill text-lg" id="bankAccount" name="bankAccount" aria-describedby="bankAccount" placeholder="Enter your Bank Account Name" />
       </div> */}
-      <div className="d-sm-block d-flex flex-column w-100">
-        <Button buttonName="Checkout Now" className="btn btn-submit rounded-pill fw-medium text-white border-0 text-lg" action={handleSubmit} />
-      </div>
     </form>
   );
 }
