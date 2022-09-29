@@ -6,12 +6,20 @@ import { useRouter } from "next/router";
 // Components
 import Button from "../../Basics/Button";
 import TransactionsList from "../../Parts/Checkout/transactionsList";
+import { toast } from "react-toastify";
+import { postData } from "../../../services/fetchData";
+import Cookies from "js-cookie";
 
 export default function CheckoutPage() {
-  const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE,
+  // API URL
+  const ROOT_API = process.env.NEXT_PUBLIC_API_PRO,
+    API_VERSION = "api/v1-player",
+    API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE;
+  const { query } = useRouter(),
     router = useRouter(),
     // Use State
-    [checkoutGame, setCheckoutGame] = useState([]);
+    [checkoutGame, setCheckoutGame] = useState([]),
+    [checkbox, setCheckbox] = useState(false);
 
   const getGameCheckout = () => {
     // Get Game Data from localStorage
@@ -27,9 +35,63 @@ export default function CheckoutPage() {
     getGameCheckout();
   }, []);
 
-  // Handle Router
-  const handleSubmit = () => {
-    router.push("/checkout/success-checkout");
+  // Handle Submit
+  const handleSubmit = async () => {
+    try {
+      // Get Topup Data from LocalStorage
+      const topupDataLocal = localStorage.getItem("topup-data"),
+        topupDataParse = JSON.parse(topupDataLocal);
+
+      // Purchase Counts
+      const taxPrice = topupDataParse.voucherList.nominal.price * (11 / 100),
+        totalPrice = topupDataParse.voucherList.nominal.price + taxPrice;
+
+      if (!checkbox) {
+        toast.error("Please Checked 'I Have Transferred The Money'", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+
+      // Set Data
+      const payload = {
+        accountPlayer: topupDataParse.form.accountPlayer,
+        tax: taxPrice,
+        value: totalPrice,
+        game: query.id,
+        voucher: topupDataParse.voucherList._id,
+        payment: topupDataParse.paymentList._id,
+        banks: topupDataParse.paymentList.banks._id,
+      };
+
+      // Get Token
+      const tokenLocal = Cookies.get("xpToken"),
+        token = atob(tokenLocal);
+
+      const resCheckout = await postData(`${ROOT_API}/${API_VERSION}/player/checkout`, payload, token);
+
+      console.log(resCheckout);
+
+      if (resCheckout) {
+        toast.success("Your Payment is Confirmed. Thank You", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+        // Redirect to Success Checkout
+        router.push("/checkout/success-checkout");
+      }
+    } catch (err) {}
   };
 
   return (
@@ -66,7 +128,7 @@ export default function CheckoutPage() {
 
         <label className="checkbox-label text-lg color-palette-1">
           I have transferred the money
-          <input type="checkbox" />
+          <input type="checkbox" checked={checkbox} onChange={() => setCheckbox(!checkbox)} />
           <span className="checkmark"></span>
         </label>
         <div className="d-md-block d-flex flex-column w-100 pt-50">

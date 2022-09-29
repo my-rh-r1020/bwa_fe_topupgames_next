@@ -39,7 +39,7 @@ export default function TransactionsList() {
     getTopupCheckout();
   }, []);
 
-  // Purchase Counting
+  // Purchase Counts
   const taxPurchase = checkoutTopUp.voucherList.nominal.price * (11 / 100),
     totalPurchase = checkoutTopUp.voucherList.nominal.price + taxPurchase;
 

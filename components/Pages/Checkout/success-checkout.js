@@ -12,6 +12,11 @@ export default function SuccessCheckoutPage() {
     router.push("/member/dashboard");
   };
 
+  // Handle Router Admin
+  const handleRouterAdmin = () => {
+    router.push("#");
+  };
+
   return (
     <section className="complete-checkout mx-auto pt-lg-145 pb-lg-145 pt-100 pb-80">
       <div className="container-fluid">
@@ -145,7 +150,7 @@ export default function SuccessCheckoutPage() {
         </div>
         <div className="button-group d-flex flex-column mx-auto">
           <Button buttonName="My Dashboard" className="btn btn-dashboard fw-medium text-lg text-white rounded-pill mb-16" action={handleRouter} />
-          <Button buttonName="WhatsApp ke Admin" className="btn btn-whatsapp fw-medium text-lg color-palette-1 rounded-pill" action="#" />
+          <Button buttonName="WhatsApp ke Admin" className="btn btn-whatsapp fw-medium text-lg color-palette-1 rounded-pill" action={handleRouterAdmin} />
         </div>
       </div>
     </section>
