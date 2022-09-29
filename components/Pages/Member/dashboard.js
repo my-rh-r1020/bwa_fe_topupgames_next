@@ -1,11 +1,38 @@
 // Library
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 // Component
 import SidebarNavigation from "../../Parts/Member/Sidebar";
 import MainContent from "../../Parts/Member/Dashboard/mainContent";
+import { getData } from "../../../services/fetchData";
+import TableContent from "../../Parts/Member/Dashboard/tableContent";
 
 export default function DashboardPage() {
+  const ROOT_API = process.env.NEXT_PUBLIC_API_PRO,
+    API_VERSION = "api/v1-player",
+    // Use State
+    [dashboard, setDashboard] = useState([]);
+
+  console.log(dashboard);
+
+  const Dashboard = async () => {
+    try {
+      // Get Token
+      const tokenLocal = Cookies.get("xpToken"),
+        tokenParse = atob(tokenLocal);
+
+      // Fetch API
+      const res = await getData(`${ROOT_API}/${API_VERSION}/player/dashboard`, {}, tokenParse);
+
+      setDashboard(res.data.data);
+    } catch (err) {}
+  };
+
+  useEffect(() => {
+    Dashboard();
+  }, []);
+
   return (
     <section className="overview overflow-auto">
       <SidebarNavigation />
@@ -37,7 +64,7 @@ export default function DashboardPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="align-middle">
+                  {/* <tr className="align-middle">
                     <th scope="row">
                       <img className="float-start me-3 mb-lg-0 mb-3" src="/images/overview-1.png" width="80" height="60" alt="" />
                       <div className="game-title-header">
@@ -120,7 +147,20 @@ export default function DashboardPage() {
                         <p className="fw-medium text-start color-palette-1 m-0 position-relative">Pending</p>
                       </div>
                     </td>
-                  </tr>
+                  </tr> */}
+
+                  {dashboard.map((data, i) => (
+                    <TableContent
+                      key={i.id}
+                      urlImage={`${ROOT_API}/cover-games/${data.game.coverGames}`}
+                      gameName={data.game.gameName}
+                      gameCategory={data.game.category}
+                      coinQuantity={data.historyVoucher.nominal}
+                      coinName={data.historyVoucher.nominal}
+                      price={data.value}
+                      status={data.status}
+                    />
+                  ))}
                 </tbody>
               </table>
             </div>
