@@ -1,6 +1,7 @@
 // Library
 import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
+import numeral from "numeral";
 
 // Component
 import SidebarNavigation from "../../Parts/Member/Sidebar";
@@ -9,7 +10,7 @@ import { getData } from "../../../services/fetchData";
 import TableContent from "../../Parts/Member/Dashboard/tableContent";
 
 export default function DashboardPage() {
-  const ROOT_API = process.env.NEXT_PUBLIC_API_PRO,
+  const API_IMAGE = process.env.NEXT_PUBLIC_API_IMAGE,
     API_VERSION = "api/v1-player",
     // Use State
     [dashboard, setDashboard] = useState([]);
@@ -152,12 +153,12 @@ export default function DashboardPage() {
                   {dashboard.map((data, i) => (
                     <TableContent
                       key={i.id}
-                      urlImage={`${ROOT_API}/cover-games/${data.game.coverGames}`}
+                      urlImage={`${API_IMAGE}/cover-games/${data.game.coverGames}`}
                       gameName={data.game.gameName}
                       gameCategory={data.game.category}
-                      coinQuantity={data.historyVoucher.nominal}
-                      coinName={data.historyVoucher.nominal}
-                      price={data.value}
+                      coinQuantity={data.historyVoucher.coinQuantity}
+                      coinName={data.historyVoucher.coinName}
+                      price={`Rp ${numeral(data.value).format("0,0")}`}
                       status={data.status}
                     />
                   ))}

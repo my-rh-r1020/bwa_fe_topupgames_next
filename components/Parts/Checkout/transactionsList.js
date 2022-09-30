@@ -40,8 +40,8 @@ export default function TransactionsList() {
   }, []);
 
   // Purchase Counts
-  const taxPurchase = checkoutTopUp.voucherList.nominal.price * (11 / 100),
-    totalPurchase = checkoutTopUp.voucherList.nominal.price + taxPurchase;
+  const taxPurchase = checkoutTopUp.voucherList.price * (11 / 100),
+    totalPurchase = checkoutTopUp.voucherList.price + taxPurchase;
 
   return (
     <div>
@@ -49,8 +49,8 @@ export default function TransactionsList() {
         <h2 className="fw-bold text-xl color-palette-1 mb-20">Purchase Details</h2>
         <TransactionList transactionPoint="Your Game ID" transactionItem={checkoutTopUp.form.accountPlayer} />
         <TransactionList transactionPoint="Order ID" transactionItem="#GG001" />
-        <TransactionList transactionPoint="Item" transactionItem={`${checkoutTopUp.voucherList.nominal.coinQuantity} ${checkoutTopUp.voucherList.nominal.coinName}`} />
-        <TransactionList transactionPoint="Price" transactionItem={`Rp ${numeral(checkoutTopUp.voucherList.nominal.price).format("0,0")}`} />
+        <TransactionList transactionPoint="Item" transactionItem={`${checkoutTopUp.voucherList.coinQuantity} ${checkoutTopUp.voucherList.coinName}`} />
+        <TransactionList transactionPoint="Price" transactionItem={`Rp ${numeral(checkoutTopUp.voucherList.price).format("0,0")}`} />
         <TransactionList transactionPoint="Tax (11%)" transactionItem={`Rp ${numeral(taxPurchase).format("0,0")}`} />
         <TransactionList transactionPoint="Total" transactionItem={`Rp ${numeral(totalPurchase).format("0,0")}`} />
       </div>

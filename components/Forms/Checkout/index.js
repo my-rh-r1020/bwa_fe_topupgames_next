@@ -82,9 +82,9 @@ export default function CheckoutForm({ data1, data2 }) {
                 onChange={() => handleVoucherItemChange(voucher)}
                 id={voucher._id}
                 value={voucher._id}
-                coinQuantity={voucher.nominal.coinQuantity}
-                coinName={voucher.nominal.coinName}
-                price={`Rp ${numeral(voucher.nominal.price).format("0,0")}`}
+                coinQuantity={voucher.coinQuantity}
+                coinName={voucher.coinName}
+                price={`Rp ${numeral(voucher.price).format("0,0")}`}
               />
             ))
           ) : (

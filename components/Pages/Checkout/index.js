@@ -43,8 +43,8 @@ export default function CheckoutPage() {
         topupDataParse = JSON.parse(topupDataLocal);
 
       // Purchase Counts
-      const taxPrice = topupDataParse.voucherList.nominal.price * (11 / 100),
-        totalPrice = topupDataParse.voucherList.nominal.price + taxPrice;
+      const taxPrice = topupDataParse.voucherList.price * (11 / 100),
+        totalPrice = topupDataParse.voucherList.price + taxPrice;
 
       if (!checkbox) {
         toast.error("Please Checked 'I Have Transferred The Money'", {
